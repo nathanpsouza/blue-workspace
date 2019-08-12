@@ -12,10 +12,10 @@ First, clone this repository with
 $ git clone git@github.com:nathanpsouza/blue-workspace.git
 ```
 
-Move to blue-workspace directory and clone blue-shorter project:
+Move to blue-workspace directory and clone blue-shorter and blue-shorter-app projects:
 
 ```
-$ cd blue-workspace && git clone git@github.com:nathanpsouza/blue-shorter.git
+$ cd blue-workspace && git clone git@github.com:nathanpsouza/blue-shorter.git && git clone git@github.com:nathanpsouza/blue-shorter-app.git
 ```
 
 ## Building docker image
@@ -23,15 +23,23 @@ $ cd blue-workspace && git clone git@github.com:nathanpsouza/blue-shorter.git
 To build project, run:
 
 ```
-$ docker-compose build app
+$ docker-compose build app front
 ```
 
-## Up rails server
+## Create database and run migrations
+To create database and run migrations, execute on terminal:
+
+```
+$ docker-compose build run --rm app bash -c "rails db:create db:migrate"
+```
+
+
+## Run project
 
 To run project, execute on terminal:
 
 ```
-$ docker-compose up app
+$ docker-compose up front
 ```
 
-After that, you can access api through address http://localhost:3000.
+After that, you can access front end app through address http://localhost:3001.
