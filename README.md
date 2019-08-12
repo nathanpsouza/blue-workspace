@@ -30,7 +30,7 @@ $ docker-compose build app front
 To create database and run migrations, execute on terminal:
 
 ```
-$ docker-compose build run --rm app bash -c "rails db:create db:migrate"
+$ docker-compose run --rm app bash -c "rails db:create db:migrate"
 ```
 
 
