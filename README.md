@@ -38,7 +38,7 @@ $ docker-compose run app bash -c "yarn install"
 To create database and run migrations, execute on terminal:
 
 ```
-$ docker-compose build run --rm app bash -c "rails db:create db:migrate"
+$ docker-compose run --rm app bash -c "rails db:create db:migrate"
 ```
 
 ## Execute backend tests
