@@ -18,10 +18,10 @@ services:
       - 'env'
 
   app:
-    build: ./blue_shorter
+    build: ./blue-shorter
     command: /bin/bash -c "bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
-        - ./blue_shorter:/app
+        - ./blue-shorter:/app
     ports:
         - "3000:3000"
     env_file:
@@ -29,16 +29,29 @@ services:
     depends_on:
         - postgres
         - redis
+        - sidekiq
+    tty: true
+    stdin_open: true
+
+  front:
+    build: ./blue-shorter-app
+    command: /bin/bash -c "yarn start"
+    volumes:
+        - ./blue-shorter-app:/app
+    ports:
+        - "3001:3001"
+    env_file:
+        - 'env'
+    depends_on:
+        - app
     tty: true
     stdin_open: true
 
   sidekiq:
-    build: ./blue_shorter
+    build: ./blue-shorter
     command: /bin/bash -c "bundle exec sidekiq"
     volumes:
-        - ./blue_shorter:/app
-    ports:
-        - "3000:3000"
+        - ./blue-shorter:/app
     env_file:
         - 'env'
     depends_on:
