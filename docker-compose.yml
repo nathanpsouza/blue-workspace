@@ -32,6 +32,21 @@ services:
     tty: true
     stdin_open: true
 
+  sidekiq:
+    build: ./blue_shorter
+    command: /bin/bash -c "bundle exec sidekiq"
+    volumes:
+        - ./blue_shorter:/app
+    ports:
+        - "3000:3000"
+    env_file:
+        - 'env'
+    depends_on:
+        - postgres
+        - redis
+    tty: true
+    stdin_open: true
+
 volumes:
   redis:
   postgres:
