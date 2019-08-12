@@ -26,6 +26,14 @@ To build project, run:
 $ docker-compose build app front
 ```
 
+## Install frontend app dependencies
+
+To build project, run:
+
+```
+$ docker-compose run app bash -c "yarn install"
+```
+
 ## Create database and run migrations
 To create database and run migrations, execute on terminal:
 
@@ -33,6 +41,15 @@ To create database and run migrations, execute on terminal:
 $ docker-compose build run --rm app bash -c "rails db:create db:migrate"
 ```
 
+## Execute backend tests
+
+To run rspec, execute on terminal:
+
+```
+$ docker-compose run app bash -c "rspec spec"
+```
+
+After that, you can access front end app through address http://localhost:3001.
 
 ## Run project
 
