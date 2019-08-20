@@ -31,7 +31,7 @@ $ docker-compose build app front
 To build project, run:
 
 ```
-$ docker-compose run app bash -c "yarn install"
+$ docker-compose run frpnt bash -c "yarn install"
 ```
 
 ## Create database and run migrations
